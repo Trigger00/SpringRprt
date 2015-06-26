@@ -19,49 +19,42 @@ import unalm.startbootstrapSbAdmin.model.Programa;
 @Controller
 @RequestMapping("/report/")
 public class ReportController {
- 
- 
-  
- 
-    @Autowired
+
+	@Autowired
 	ProgramaDAO programaDAO;
- 
-    @RequestMapping(method = RequestMethod.GET , value = "pdf")
-    public ModelAndView generatePdfReport(ModelAndView modelAndView){
- 
-       
- 
-        Map<String,Object> parameterMap = new HashMap<String,Object>();
- 
-        List<Programa> usersList = programaDAO.list();
- 
-        JRDataSource JRdataSource = new JRBeanCollectionDataSource(usersList);
- 
-        parameterMap.put("datasource", JRdataSource);
- 
-        //pdfReport bean has ben declared in the jasper-views.xml file
-        modelAndView = new ModelAndView("pdfReport", parameterMap);
- 
-        return modelAndView;
- 
-    }//generatePdfReport
- 
- 
-    @RequestMapping(method = RequestMethod.GET , value = "pdf2")
-    public ModelAndView generatePdfReport2(ModelAndView modelAndView){
- 
-       
- 
-        Map<String,Object> parameterMap = new HashMap<String,Object>();
- 
-        parameterMap.put("P_TITULO", "EXITOOOO");
- 
-        //pdfReport bean has ben declared in the jasper-views.xml file
-        modelAndView = new ModelAndView("pdfReport", parameterMap);
- 
-        return modelAndView;
- 
-    }//generatePdfReport
- 
- 
-}//ReportController
+
+	@RequestMapping(method = RequestMethod.GET, value = "pdf")
+	public ModelAndView generatePdfReport(ModelAndView modelAndView) {
+		System.out.println("Entra la String generatePdfReport");
+		Map<String, Object> parameterMap = new HashMap<String, Object>();
+
+		List<Programa> usersList = programaDAO.list();
+
+		JRDataSource JRdataSource = new JRBeanCollectionDataSource(usersList);
+		System.out.println("valores de parameterMap001 " + " " + JRdataSource);
+		
+		parameterMap.put("P_EXITO", "DATAAAA");
+		parameterMap.put("datasource", JRdataSource);
+
+		// pdfReport bean has ben declared in the jasper-views.xml file
+		modelAndView = new ModelAndView("pdfReport", parameterMap);
+
+		return modelAndView;
+
+	}// generatePdfReport
+
+	@RequestMapping(value = "pdf2", method = RequestMethod.GET)
+	public ModelAndView pdf(ModelAndView modelAndView) {
+		System.out.println("entra al pdf2");
+		//Map<String, Object> parameterMap = new HashMap<String, Object>();
+		 Map parameterMap = new HashMap();
+		parameterMap.put("message", "Thor");
+
+		System.out.println("valores de parameterMap " + " " + parameterMap);
+		// pdfReport bean has ben declared in the jasper-views.xml file
+		modelAndView = new ModelAndView("helloReport", parameterMap);
+
+		return modelAndView;
+	}
+
+}// ReportController
