@@ -2,18 +2,25 @@ package unalm.startbootstrapSbAdmin.model;
 //libreria de jpa, tiene como extencion javax
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Programa")
 public class Programa implements Serializable {
 
-    @Id
-    @GeneratedValue
+	
+	@SequenceGenerator(name = "LOG_ID_SEQ", sequenceName = "LOG_ID_SEQ")
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "LOG_ID_SEQ")
+    //@Id
+    //@GeneratedValue
     @Column(name = "id")
     private Long id;
 
@@ -27,7 +34,19 @@ public class Programa implements Serializable {
     public Programa() {
     }
 
-    public Programa(Long id) {
+    
+    
+    public Programa(Long id, String nombre, String descripcion, String codigo) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.codigo = codigo;
+	}
+
+
+
+	public Programa(Long id) {
         this.id = id;
     }
     

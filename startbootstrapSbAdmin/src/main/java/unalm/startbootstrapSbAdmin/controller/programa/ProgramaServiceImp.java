@@ -30,6 +30,12 @@ public class ProgramaServiceImp implements ProgramaService {
 	}
 
 	public void guardarPrograma(Programa programa) {
+		System.out.println("ID en el service es: "+programa.getId() );
+		if (programa.getId() == null) {
+			
+			System.out.println("Entra a save");
+		}
+		
 		if (programa.getId() == null) {
 			programaDAO.save(programa);
 		} else {

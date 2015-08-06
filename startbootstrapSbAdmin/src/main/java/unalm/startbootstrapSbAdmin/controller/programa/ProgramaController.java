@@ -6,7 +6,9 @@
 package unalm.startbootstrapSbAdmin.controller.programa;
 
 import unalm.startbootstrapSbAdmin.model.Programa;
+
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,17 +44,26 @@ public class ProgramaController {
 
     @RequestMapping("{id}/editar")
     public String editar(@PathVariable("id")Long id,Model model) {
-        Programa programa = service .findPrograma(id);
+    	System.out.println("entro a editar");
+        Programa programa = service.findPrograma(id);
         if(programa == null ){
            return "redirect:/programa";
         }
         model.addAttribute("programa",programa);
+        System.out.println(programa.getId());
+        System.out.println(programa.getCodigo());
+        
              return "programa/formulario";
     }
 
     @RequestMapping("guardar")
     public String guardar(Programa programa) {
-        System.out.println(programa.getId());
+
+		System.out.println("entro a guardar");
+		System.out.println("El ID:  "+programa.getId());
+		System.out.println(programa.getNombre());
+		System.out.println(programa.getDescripcion());
+		System.out.println(programa.getCodigo());
         service.guardarPrograma(programa);
         return "redirect:/programa";
     }

@@ -15,15 +15,17 @@
         <h1>Programa</h1>
 
         <form method="post" action="<%=request.getContextPath()%>/programa/guardar">
-            <input type="hidden" value="${programa.id}"/>
+          <input type="hidden" name="id" value="${programa.id}"/> 
 
+            <br/>
+            <br/>
             <label> Nombre </label>
             <input type="text" name="nombre" value="${programa.nombre}" />
             <br/>
             <br/>
-            <label> Descripción </label>
+           <label> Descripción </label>
             <input type="text" name="descripcion" value="${programa.descripcion}" />
-            <br/>
+            <br/> 
             <br/>
             <label> Código </label>
             <input type="text" name="codigo" value="${programa.codigo}"/>
