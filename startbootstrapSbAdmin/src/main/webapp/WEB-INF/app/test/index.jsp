@@ -326,7 +326,7 @@
 
 
 
-						<table>
+						<table class="table table-striped">
 							<tr>
 								<th>Matricula</th>
 								<th>Programa</th>
@@ -375,7 +375,7 @@
 						</div>
 					</div>
 
-					<table>
+					<table  class="table table-striped">
 						<tr>
 							<th>id</th>
 							<th>matricula</th>
